@@ -45,7 +45,7 @@ function createSheetsFromMap(cases) {
         let sheet = spreadsheet.getSheetByName(sheetName);
         if (sheet) {
             // If sheet exists, clear it
-            sheet.clear();
+            // sheet.clear();
         } else {
             // If no such sheet exists, create it
             sheet = spreadsheet.insertSheet(sheetName);
@@ -65,7 +65,9 @@ function createSheetsFromMap(cases) {
     });
 }
 
-// Example usage
+// v4 dynamic map creation
 function run_create() {
+    const setupPage = 'Setup'
+    cases = createMapFromSheet(setupPage)
     createSheetsFromMap(cases);
 }
