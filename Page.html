@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+</head>
+
+<body>
+    <form id="inputForm">
+        Secret Key: <input type="text" name="secretKey"><br>
+        <input type="button" value="Submit" onclick="submitForm()">
+    </form>
+
+    <script>
+        function submitForm() {
+            var form = document.getElementById('inputForm');
+            var secretKey = form.secretKey.value;
+            google.script.run
+                .withSuccessHandler(function () {
+                    google.script.host.close();
+                })
+                .storeSecret(secretKey);
+        }
+    </script>
+</body>
+
+</html>

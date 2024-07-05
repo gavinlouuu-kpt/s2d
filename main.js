@@ -3,9 +3,22 @@ function onOpen() {
     const menu = ui.createMenu('AutoFill Docs');
     menu.addItem('Create New Docs', 'createNewGoogleDocs')
     menu.addToUi();
+    menu.addItem('Enter Secret', 'showDialog')
+    menu.addToUi();
+    menu.addItem('Send request', 's2Gem')
+    menu.addToUi();
     menu.addItem('Reset All', 'run_create')
     menu.addToUi();
 }
+
+function showDialog() {
+    var html = HtmlService.createHtmlOutputFromFile('Page')
+        .setWidth(400)
+        .setHeight(300);
+    SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+        .showModalDialog(html, 'Enter Secrets');
+}
+
 
 function createNewGoogleDocs() {
     const todayFolderID = dynamicFolder();
